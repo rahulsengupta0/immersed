@@ -1,121 +1,222 @@
+/* MasterclassBanner.css */
+
+/* Main Container */
 .masterclass-hero-section {
   position: relative;
+  min-height: 100vh;
   width: 100%;
-  background-image: url('../assets/mc_bg.jpg');
-  background-size: cover;
-  background-position: center;
-  padding: 60px 0px;
   display: flex;
+  align-items: center;
   justify-content: center;
-  font-family: 'Poppins', sans-serif;
+  padding: 4rem 2rem;
+  color: white;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(135deg, #0f172a 0%, #8592b5 100%);
+}
+
+/* 3D Background Container */
+.three-d-background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Content Wrapper */
+.masterclass-content-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Floating Particles */
+.floating-particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
   z-index: 1;
   overflow: hidden;
 }
 
-.masterclass-hero-section::before {
-  content: '';
+.particle {
   position: absolute;
-  inset: 0;
-  background-color: rgba(2, 11, 37, 0.2); /* dark blue with transparency */
-  z-index: 0;
+  width: 6px;
+  height: 6px;
+  background: rgba(56, 189, 248, 0.6);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+  will-change: transform;
 }
 
-.masterclass-hero-section > * {
-  position: relative;
-  z-index: 1; /* to show above overlay */
-}
-
-.masterclass-hero-wrapper {
-  max-width: 1200px;
-  width: 100%;
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
+/* Image Container */
 .masterclass-hero-image-container {
+  position: relative;
+  max-width: 800px;
   width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transform-origin: center;
+  will-change: transform;
 }
 
 .masterclass-hero-image {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
 }
 
+.image-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(2, 132, 199, 0.5) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Text Content */
 .masterclass-hero-text {
-  padding:  0px 20px 40px;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 1rem;
 }
 
 .masterclass-hero-subtitle {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 700;
-  line-height: 1.5;
-  margin-bottom: 10px;
-  color: #1f1f1f;
-  text-align: center;
-  background: #343535;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: fadeSlideIn 1s ease-out forwards;
-  opacity: 0;
-  transform: translateY(20px);
-  letter-spacing: 0.5px;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
-@keyframes fadeSlideIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Optional extra highlight for key words */
 .highlight-word {
-  font-weight: 800;
-  background: linear-gradient(to right, #367dcf, #1a66d9);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.masterclass-hero-button {
+  color: #38bdf8;
   display: inline-block;
-  padding: 12px 32px;
+  position: relative;
+  transform-origin: center;
+}
+
+.highlight-word::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #38bdf8;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.highlight-word:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Button Styles */
+.masterclass-hero-button {
+  background: linear-gradient(90deg, #0284c7 0%, #0ea5e9 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
   font-size: 1.1rem;
-  background: linear-gradient(135deg, #5fa8d3, #367dcf);
-  color: #fff;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 8px 20px rgba(95, 168, 211, 0.2);
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
-.masterclass-hero-button:hover {
-  background: linear-gradient(135deg, #4c95c5, #2f6fbd);
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(47, 111, 189, 0.3);
+.masterclass-hero-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #0ea5e9 0%, #0284c7 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
 }
 
-/* Mobile Responsive */
+.masterclass-hero-button:hover::before {
+  opacity: 1;
+}
+
+.masterclass-hero-button span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .masterclass-hero-text {
-    padding: 20px 16px 30px;
+  .masterclass-hero-section {
+    padding: 4rem 1rem;
+  }
+
+  .masterclass-content-wrapper {
+    gap: 2rem;
   }
 
   .masterclass-hero-subtitle {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
   }
 
   .masterclass-hero-button {
-    padding: 10px 24px;
+    padding: 0.8rem 1.5rem;
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .masterclass-hero-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .masterclass-hero-image-container {
+    border-radius: 12px;
+  }
+}
+
+/* Animation Performance Optimizations */
+.masterclass-hero-image-container,
+.masterclass-hero-text,
+.masterclass-hero-button,
+.highlight-word {
+  will-change: transform, opacity;
+}
+
+/* Prevent FOUC */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
